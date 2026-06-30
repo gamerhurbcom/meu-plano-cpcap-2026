@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy-950: #050b18;
+  --navy-900: #0a1428;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--navy-950);
+  color: #eef2f8;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(94, 203, 255, 0.06), transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(201, 164, 86, 0.05), transparent 40%);
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1d3661;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a4a80;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(15, 29, 56, 0.7) 0%, rgba(10, 20, 40, 0.7) 100%);
+  border: 1px solid rgba(94, 203, 255, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(6px);
+}
+
+.card-gold {
+  border: 1px solid rgba(201, 164, 86, 0.25);
+}
+
+.progress-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #36b5f5, #c9a456);
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
