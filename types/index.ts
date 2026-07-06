@@ -25,6 +25,7 @@ export interface Aula {
   moduloId: string;
   titulo: string;
   resumo: string;
+  conteudo: string;
   checklist: string[];
 }
 

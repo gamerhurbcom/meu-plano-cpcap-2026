@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Header from '@/components/Header';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { useCloudStorage } from '@/hooks/useCloudStorage';
 import { RevisaoItem } from '@/types';
 import { gerarId, formatarData } from '@/lib/utils';
 import { materias } from '@/data/materias';
@@ -16,7 +16,7 @@ function calcularProximaRevisao(dataEstudo: string, intervaloDias: number): stri
 }
 
 export default function RevisoesPage() {
-  const [revisoes, setRevisoes] = useLocalStorage<RevisaoItem[]>('revisoes', []);
+  const [revisoes, setRevisoes] = useCloudStorage<RevisaoItem[]>('revisoes', []);
   const [form, setForm] = useState({ materia: materias[0].nome, topico: '', dataEstudo: '', intervaloDias: 1 });
 
   function adicionar() {

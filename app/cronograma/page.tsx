@@ -4,12 +4,12 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import ProgressBar from '@/components/ProgressBar';
 import { cronograma } from '@/data/cronograma';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { useCloudStorage } from '@/hooks/useCloudStorage';
 import { ProgressoSemana } from '@/types';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function CronogramaPage() {
-  const [progresso, setProgresso] = useLocalStorage<Record<string, ProgressoSemana>>('cronograma-progresso', {});
+  const [progresso, setProgresso] = useCloudStorage<Record<string, ProgressoSemana>>('cronograma-progresso', {});
   const [aberta, setAberta] = useState<number | null>(1);
 
   const totalDias = cronograma.reduce((acc, s) => acc + s.dias.length, 0);

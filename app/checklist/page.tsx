@@ -3,10 +3,10 @@
 import Header from '@/components/Header';
 import ProgressBar from '@/components/ProgressBar';
 import { checklistProva, proibidosProva } from '@/data/checklist';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { useCloudStorage } from '@/hooks/useCloudStorage';
 
 export default function ChecklistPage() {
-  const [marcados, setMarcados] = useLocalStorage<Record<string, boolean>>('checklist-prova', {});
+  const [marcados, setMarcados] = useCloudStorage<Record<string, boolean>>('checklist-prova', {});
 
   function toggle(id: string) {
     setMarcados((prev) => ({ ...prev, [id]: !prev[id] }));

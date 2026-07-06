@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import SubjectCard from '@/components/SubjectCard';
 import { materias, metasAcertos } from '@/data/materias';
 import { modulos } from '@/data/aulas';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { useCloudStorage } from '@/hooks/useCloudStorage';
 import { ProgressoAula } from '@/types';
 
 const moduloPorMateria: Record<string, string> = {
@@ -17,7 +17,7 @@ const moduloPorMateria: Record<string, string> = {
 };
 
 export default function MateriasPage() {
-  const [progresso] = useLocalStorage<Record<string, ProgressoAula>>('aulas-progresso', {});
+  const [progresso] = useCloudStorage<Record<string, ProgressoAula>>('aulas-progresso', {});
 
   function progressoMateria(materiaId: string): number {
     const moduloId = moduloPorMateria[materiaId];

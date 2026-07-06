@@ -2,14 +2,14 @@
 
 import { useState, useMemo } from 'react';
 import Header from '@/components/Header';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { useCloudStorage } from '@/hooks/useCloudStorage';
 import { Anotacao } from '@/types';
 import { gerarId, formatarData } from '@/lib/utils';
 
 const categorias = ['Redes', 'Java', 'Banco de Dados', 'Sistemas Operacionais', 'Segurança da Informação', 'Organização de Computadores', 'Redação', 'Dúvidas'];
 
 export default function AnotacoesPage() {
-  const [anotacoes, setAnotacoes] = useLocalStorage<Anotacao[]>('anotacoes', []);
+  const [anotacoes, setAnotacoes] = useCloudStorage<Anotacao[]>('anotacoes', []);
   const [form, setForm] = useState({ titulo: '', texto: '', categoria: categorias[0] });
   const [filtro, setFiltro] = useState('Todas');
   const [busca, setBusca] = useState('');

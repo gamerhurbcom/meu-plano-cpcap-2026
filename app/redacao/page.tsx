@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Header from '@/components/Header';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { useCloudStorage } from '@/hooks/useCloudStorage';
 import { Redacao } from '@/types';
 import { gerarId, formatarData } from '@/lib/utils';
 import { redacaoTemas, criteriosRedacao } from '@/data/redacaoTemas';
@@ -18,7 +18,7 @@ const vazio = {
 };
 
 export default function RedacaoPage() {
-  const [redacoes, setRedacoes] = useLocalStorage<Redacao[]>('redacoes', []);
+  const [redacoes, setRedacoes] = useCloudStorage<Redacao[]>('redacoes', []);
   const [form, setForm] = useState(vazio);
 
   function adicionar() {

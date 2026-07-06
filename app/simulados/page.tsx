@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Header from '@/components/Header';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { useCloudStorage } from '@/hooks/useCloudStorage';
 import { Simulado } from '@/types';
 import { gerarId, formatarData } from '@/lib/utils';
 
@@ -18,7 +18,7 @@ const vazio = {
 };
 
 export default function SimuladosPage() {
-  const [simulados, setSimulados] = useLocalStorage<Simulado[]>('simulados', []);
+  const [simulados, setSimulados] = useCloudStorage<Simulado[]>('simulados', []);
   const [form, setForm] = useState(vazio);
 
   function adicionar() {

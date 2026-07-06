@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import ProgressBar from '@/components/ProgressBar';
 import { modulos } from '@/data/aulas';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { useCloudStorage } from '@/hooks/useCloudStorage';
 import { ProgressoAula, StatusAula } from '@/types';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -21,7 +21,7 @@ const statusColor: Record<StatusAula, string> = {
 };
 
 export default function AulasPage() {
-  const [progresso, setProgresso] = useLocalStorage<Record<string, ProgressoAula>>('aulas-progresso', {});
+  const [progresso, setProgresso] = useCloudStorage<Record<string, ProgressoAula>>('aulas-progresso', {});
   const [aulaAberta, setAulaAberta] = useState<string | null>(null);
 
   const todasAulas = modulos.flatMap((m) => m.aulas);
@@ -105,6 +105,12 @@ export default function AulasPage() {
                             className="overflow-hidden"
                           >
                             <div className="px-4 pb-4 space-y-3 border-t border-white/5 pt-3">
+                              <div className="bg-black/20 border border-white/5 rounded-lg p-3">
+                                <p className="text-xs font-semibold text-neon-400 mb-2">📖 Conteúdo da aula</p>
+                                <div className="text-xs text-white/70 leading-relaxed whitespace-pre-wrap">
+                                  {aula.conteudo}
+                                </div>
+                              </div>
                               <div>
                                 <p className="text-xs text-white/40 mb-1.5">
                                   Checklist ({checklistFeito}/{aula.checklist.length})

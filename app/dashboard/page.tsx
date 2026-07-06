@@ -3,17 +3,17 @@
 import Header from '@/components/Header';
 import ProgressCard from '@/components/ProgressCard';
 import ProgressBar from '@/components/ProgressBar';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { useCloudStorage } from '@/hooks/useCloudStorage';
 import { cronograma } from '@/data/cronograma';
 import { modulos } from '@/data/aulas';
 import { ProgressoSemana, ProgressoAula, Simulado, Redacao } from '@/types';
 import { motion } from 'framer-motion';
 
 export default function DashboardPage() {
-  const [semanasProgresso] = useLocalStorage<Record<string, ProgressoSemana>>('cronograma-progresso', {});
-  const [aulasProgresso] = useLocalStorage<Record<string, ProgressoAula>>('aulas-progresso', {});
-  const [simulados] = useLocalStorage<Simulado[]>('simulados', []);
-  const [redacoes] = useLocalStorage<Redacao[]>('redacoes', []);
+  const [semanasProgresso] = useCloudStorage<Record<string, ProgressoSemana>>('cronograma-progresso', {});
+  const [aulasProgresso] = useCloudStorage<Record<string, ProgressoAula>>('aulas-progresso', {});
+  const [simulados] = useCloudStorage<Simulado[]>('simulados', []);
+  const [redacoes] = useCloudStorage<Redacao[]>('redacoes', []);
 
   const totalDias = cronograma.reduce((acc, s) => acc + s.dias.length, 0);
   const diasConcluidos = Object.values(semanasProgresso).filter((p) => p?.concluido).length;
